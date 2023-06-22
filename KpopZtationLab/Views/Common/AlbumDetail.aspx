@@ -34,6 +34,7 @@
                         <%} %>
                     </div>
                 </div>
+                <h1><%= role %></h1>
                 <%if (role == "CSTM" || role == "ADMN")
                     { %>
                 <div class="flex">

@@ -16,7 +16,7 @@ namespace KpopZtationLab.Factory
             customer.CustomerPassword = CustomerPassword;
             customer.CustomerAddress = CustomerAddress;
             customer.CustomerGender = CustomerGender;
-            customer.CustomerRole = "CSTMR";
+            customer.CustomerRole = "CSTM";
             return customer;
         }
     }

@@ -15,6 +15,7 @@ namespace KpopZtationLab.Views.Common
     {
         protected List<Artist> artists;
         protected string role = "none";
+
         protected string getRole()
         {
             var userCookiesAuth = Request.Cookies["userAuth"];
@@ -34,44 +35,34 @@ namespace KpopZtationLab.Views.Common
             {
                 role = getRole();
                 artists = ArtistController.Get_All_Artist();
-                ArtistsGridView.DataSource = artists;
-                ArtistsGridView.DataBind();
-                AdminArtistsGridView.DataSource = artists;
-                AdminArtistsGridView.DataBind();
+                AdminArtistsRepeater.DataSource = artists;
+                AdminArtistsRepeater.DataBind();
             }
         }
 
-  
-        protected void AdminArtistsGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void AdminArtistsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            //int index = AdminArtistsGridView.NewSelectedIndex;
-            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.RowIndex].Value);
-            ArtistController.Remove(ID);
-            Response.Redirect(Routes.Route.Home);
-        }
+            int ID = Convert.ToInt32(e.CommandArgument);
 
-        protected void AdminArtistsGridView_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            //int index = AdminArtistsGridView.NewEditIndex;
-            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.NewEditIndex].Value);
-            Response.Redirect(Routes.Route.UpdateArtist + "?ID=" + ID);
-        }
-
-        protected void AdminArtistsGridView_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            int ID = Convert.ToInt32(AdminArtistsGridView.DataKeys[e.NewSelectedIndex].Value);
-            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
-        }   
-            
-        protected void ArtistsGridView_SelectedIndexChanging(object  sender, GridViewSelectEventArgs e)
-        {
-            int ID = Convert.ToInt32(ArtistsGridView.DataKeys[e.NewSelectedIndex].Value);
-            Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+            if (e.CommandName == "Edit")
+            {
+                Response.Redirect(Routes.Route.UpdateArtist + "?ID=" + ID);
+            }
+            else if (e.CommandName == "Delete")
+            {
+                ArtistController.Remove(ID);
+                Response.Redirect(Routes.Route.Home);
+            }
+            else if (e.CommandName == "Select")
+            {
+                Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+            }
         }
 
         protected void CreateArtist_Click(object sender, EventArgs e)
         {
             Response.Redirect(Routes.Route.InsertArtist);
         }
+
     }
 }

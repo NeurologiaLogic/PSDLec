@@ -8,37 +8,49 @@
         <br />
         <% if (role == "ADMN")
             { %>
-        <asp:Button ID="CreateArtist" runat="server" Text="Add New Artist" OnClick="CreateArtist_Click" />
-        <asp:GridView ID="AdminArtistsGridView" runat="server" 
-            AutoGenerateColumns="false"
-            OnRowDeleting="AdminArtistsGridView_RowDeleting"
-            OnRowEditing="AdminArtistsGridView_RowEditing"
-            OnSelectedIndexChanging="AdminArtistsGridView_SelectedIndexChanging"
-            DataKeyNames="ArtistID"
-                >
-            <Columns>
-                <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
-                <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
-                <asp:CommandField 
-                    HeaderText="Actions" 
-                    ShowDeleteButton="True" 
-                    ShowEditButton="True" 
-                    ShowSelectButton="True" />
-            </Columns>
-        </asp:GridView>
+                <asp:Button ID="CreateArtist" runat="server" Text="Add New Artist" OnClick="CreateArtist_Click" />
+                <div style="display: flex; flex-wrap: wrap; justify-content: flex-start;">
+                    <asp:Repeater ID="AdminArtistsRepeater" runat="server" OnItemCommand="AdminArtistsRepeater_ItemCommand">
+                        <ItemTemplate>
+                            <div style="width: 300px; margin: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                <asp:Image ID="ArtistImage" runat="server" ImageUrl='<%# "../../"+Eval("ArtistImage") %>' style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;" />
+                                <h2 style="margin-top: 10px; margin-bottom: 0;"><%# Eval("ArtistName") %></h2>
+                                <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+                                    <asp:Button ID="EditButton" runat="server" Text="Edit" CommandName="Edit" CommandArgument='<%# Eval("ArtistID") %>' style="margin-left: 5px;" />
+                                    <asp:Button ID="DeleteButton" runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("ArtistID") %>' style="margin-left: 5px;" />
+                                    <asp:Button ID="SelectButton" runat="server" Text="Select" CommandName="Select" CommandArgument='<%# Eval("ArtistID") %>' style="margin-left: 5px;" />
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
             <%} %>
         <%else{ %>
-            <asp:GridView ID="ArtistsGridView" runat="server" 
-            AutoGenerateColumns="false"
-            OnSelectedIndexChanging="ArtistsGridView_SelectedIndexChanging"
-            DataKeyNames="ArtistID"
-                >
-            <Columns>
-                <asp:ImageField DataImageUrlField="ArtistImage" HeaderText="Artist Image"/>
-                <asp:BoundField HeaderText="Artist Name" DataField="ArtistName" />
-                <asp:CommandField ShowSelectButton="true" />
-            </Columns>
-        </asp:GridView>
+            <div class="card-deck" style="
+                    display: flex;
+                    flex-wrap: wrap;">
+                <% foreach (var artist in artists) { %>
+                    <div class="card" style="
+                            width: 250px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                            margin: 10px;
+                            padding: 10px;
+                            background-color: #fff;
+                            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <img class="card-img-top" src='<%= "../../" + artist.ArtistImage %>' style="
+                                width: 100%;
+                                height: auto;"/>
+                        <div class="card-body" style="padding: 10px;">
+                            <h5 class="card-title"><%= artist.ArtistName %></h5>
+                            <a href='<%="ArtistDetail.aspx?ID=" + artist.ArtistID %>' style="
+                                padding: 10px;
+                                text-align: right;">Select</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+
 
         <%} %>
 
