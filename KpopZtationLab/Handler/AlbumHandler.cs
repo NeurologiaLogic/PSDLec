@@ -20,7 +20,11 @@ namespace KpopZtationLab.Handler
 
         public static void Remove(int id)
         {
+            var transactionDetail = repo.transactionDetails.Find(x => x.AlbumID == id).ToList();
             Album album = repo.albums.Find(x => x.AlbumID == id).FirstOrDefault();
+            var carts = repo.carts.Find(x => x.AlbumID == id).ToList();
+            repo.carts.RemoveRange(carts);
+            repo.transactionDetails.RemoveRange(transactionDetail);
             repo.albums.Remove(album);
         }
 
