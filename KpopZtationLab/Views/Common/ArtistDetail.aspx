@@ -5,19 +5,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content">
         <div style="display:flex;flex-direction:column">
-            <h5>Artist's Image</h5>
-            <br />
             <img src="<%= "../../"+artist.ArtistImage %>" width="300" alt="no image found" />
             <br />
-            <h5>Artis's Name</h5>
+            <h5>Clothing Category Name</h5>
             <br />
             <h2 class="artist-title"><%= artist.ArtistName %></h2>
             <br />
         </div>
         <div class="right" runat="server">
-            <%if (role == "ADMN") 
+            <%if (role == "ADMN")   
                 { %>
-                    <asp:Button ID="InsertAlbum" runat="server" Text="Insert New Album" OnClick="NavigateToInsertAlbum_Click" />
+                    <asp:Button ID="InsertAlbum" runat="server" Text="Insert New Clothing Model" OnClick="NavigateToInsertAlbum_Click" />
                     <div style="
                         display: flex;
                         flex-wrap: wrap;

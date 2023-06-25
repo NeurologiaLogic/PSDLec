@@ -8,15 +8,15 @@
              runat="server" 
              OnRowDeleting="CartGridView_RowDeleting" AutoGenerateColumns="false">
             <Columns>
-                <asp:BoundField HeaderText="Album ID" DataField="Album.AlbumID" />
+                <asp:BoundField HeaderText="Clothing ID" DataField="Album.AlbumID" />
                  <asp:TemplateField>
                     <ItemTemplate>
                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Album.AlbumImage") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="Album Name" DataField="Album.AlbumName" />
+                <asp:BoundField HeaderText="Clothing Name" DataField="Album.AlbumName" />
                 <asp:BoundField HeaderText="Quantity" DataField="Qty" />
-                <asp:BoundField HeaderText="Album Price" DataField="Album.AlbumPrice" />
+                <asp:BoundField HeaderText="Clothing Price" DataField="Album.AlbumPrice" />
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" />
             </Columns>
         </asp:GridView>

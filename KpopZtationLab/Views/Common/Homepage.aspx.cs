@@ -37,6 +37,8 @@ namespace KpopZtationLab.Views.Common
                 artists = ArtistController.Get_All_Artist();
                 AdminArtistsRepeater.DataSource = artists;
                 AdminArtistsRepeater.DataBind();
+                CustomerArtistsRepeater.DataSource = artists;
+                CustomerArtistsRepeater.DataBind();
             }
         }
 
@@ -58,7 +60,24 @@ namespace KpopZtationLab.Views.Common
                 Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
             }
         }
+        protected void Admin2ArtistsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int ID = Convert.ToInt32(e.CommandArgument);
 
+            if (e.CommandName == "Edit")
+            {
+                Response.Redirect(Routes.Route.UpdateArtist + "?ID=" + ID);
+            }
+            else if (e.CommandName == "Delete")
+            {
+                ArtistController.Remove(ID);
+                Response.Redirect(Routes.Route.Home);
+            }
+            else if (e.CommandName == "Select")
+            {
+                Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + ID);
+            }
+        }
         protected void CreateArtist_Click(object sender, EventArgs e)
         {
             Response.Redirect(Routes.Route.InsertArtist);

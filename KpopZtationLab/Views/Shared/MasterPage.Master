@@ -6,8 +6,25 @@
 <head runat="server">
     <title>MasterPage</title>
     <script src="https://kit.fontawesome.com/5c162aa104.js" crossorigin="anonymous"></script>
+    
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../../css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5c162aa104.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../Assets/css/navbar.css" />
-        <link rel="stylesheet" href="../../Assets/css/global.css"/>
+    <link rel="stylesheet" href="../../Assets/css/global.css"/>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -15,7 +32,7 @@
     <form id="form1" runat="server">
         <nav id="customerNavbar" runat="server">
             <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">Thrift Shop</a>
             </div>
             <div class="right">
             <%--   <i class="fa-regular fa-cart-shopping"></i>
@@ -29,7 +46,7 @@
         </nav>
          <nav id="adminNavbar" runat="server">
             <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">Thrift Shop</a>
             </div>            
              <div class="right">
                  <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Views/Admin/TransactionReport.aspx">Transaction Report</asp:HyperLink>
@@ -39,7 +56,7 @@
         </nav>
          <nav id="guestNavbar" runat="server">
              <div class="left">
-               <a href="/Views/Common/Homepage.aspx">Kpop-Ztation</a>
+               <a href="/Views/Common/Homepage.aspx">Thrift Shop</a>
              </div>            
              <div class="right">
                 <asp:Button class="navbarButton" ID="Button1" runat="server" Text="Login" OnClick="Login_Click"/>
