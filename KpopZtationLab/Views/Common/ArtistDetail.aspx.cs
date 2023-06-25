@@ -24,8 +24,8 @@ namespace KpopZtationLab.Views.Common
                     return;
                 }
                 role = getRole();
-                artist = ArtistController.Get_Artist_By_ID(id);
-                albums = AlbumController.Get_All_Albums(id);
+                artist = CategoryController.Get_Artist_By_ID(id);
+                albums = ProductController.Get_All_Albums(id);
                 AdminAlbumsRepeater.DataSource = albums;
                 AdminAlbumsRepeater.DataBind();
         }
@@ -67,7 +67,7 @@ namespace KpopZtationLab.Views.Common
         {
             Button btn = (Button)sender;
             int ID = Convert.ToInt32(btn.CommandArgument);
-            AlbumController.Remove(ID);
+            ProductController.Remove(ID);
             Response.Redirect(Routes.Route.ArtistDetail + "?ID=" + id);
         }
 

@@ -22,7 +22,7 @@ namespace KpopZtationLab.Views.Admin
             {
                 Response.Redirect(Routes.Route.Home);
             }   
-            artist = ArtistController.Get_Artist_By_ID(id);
+            artist = CategoryController.Get_Artist_By_ID(id);
             
         }
 
@@ -35,15 +35,15 @@ namespace KpopZtationLab.Views.Admin
             var AlbumDescription = AlbumDescriptionTxt.Text;
             int AlbumPrice = int.Parse(AlbumPriceTxt.Text);
             int AlbumStock = int.Parse(AlbumStockTxt.Text);
-            string err = AlbumController.Validate(AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumImageUpload);
+            string err = ProductController.Validate(AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumImageUpload);
             if (err != "")
             {
                 errLbl.Text = err;
                 errLbl.Visible = true;
                 return;
             }
-            var AlbumImage = AlbumController.Save_Image(AlbumImageUpload);
-            AlbumController.Create_Album(id,AlbumName,AlbumImage,AlbumPrice,AlbumStock,AlbumDescription);
+            var AlbumImage = ProductController.Save_Image(AlbumImageUpload);
+            ProductController.Create_Album(id,AlbumName,AlbumImage,AlbumPrice,AlbumStock,AlbumDescription);
         }
     }
 }

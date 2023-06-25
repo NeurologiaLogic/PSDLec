@@ -24,15 +24,15 @@ namespace KpopZtationLab.Views.Admin
         protected void Update_Click(object sender, EventArgs e)
         {
             errLbl.Visible = false;
-            string err = ArtistController.Validate(ArtistTxt.Text, ArtistImageUpload);
+            string err = CategoryController.Validate(ArtistTxt.Text, ArtistImageUpload);
             if (err != "")
             {
                 errLbl.Text = err;
                 errLbl.Visible = true;
                 return;
             }
-            var image = ArtistController.Save_Image(ArtistImageUpload);
-            ArtistController.Update(id, ArtistTxt.Text, image);
+            var image = CategoryController.Save_Image(ArtistImageUpload);
+            CategoryController.Update(id, ArtistTxt.Text, image);
             Response.Redirect(Routes.Route.Home);
             //errLbl.Visible = true;
             //errLbl.Text = repo.artists.Find(x => x.ArtistName == name).Count().ToString();

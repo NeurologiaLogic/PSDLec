@@ -34,7 +34,7 @@ namespace KpopZtationLab.Views.Common
             if (!IsPostBack)
             {
                 role = getRole();
-                artists = ArtistController.Get_All_Artist();
+                artists = CategoryController.Get_All_Artist();
                 AdminArtistsRepeater.DataSource = artists;
                 AdminArtistsRepeater.DataBind();
                 CustomerArtistsRepeater.DataSource = artists;
@@ -52,7 +52,7 @@ namespace KpopZtationLab.Views.Common
             }
             else if (e.CommandName == "Delete")
             {
-                ArtistController.Remove(ID);
+                CategoryController.Remove(ID);
                 Response.Redirect(Routes.Route.Home);
             }
             else if (e.CommandName == "Select")
@@ -70,7 +70,7 @@ namespace KpopZtationLab.Views.Common
             }
             else if (e.CommandName == "Delete")
             {
-                ArtistController.Remove(ID);
+                CategoryController.Remove(ID);
                 Response.Redirect(Routes.Route.Home);
             }
             else if (e.CommandName == "Select")

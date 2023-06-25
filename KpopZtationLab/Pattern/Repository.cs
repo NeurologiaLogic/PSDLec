@@ -7,31 +7,31 @@ namespace KpopZtationLab.Pattern
 {
     public class repo
     {
-        static AlbumRepository albumRepository;
-        static ArtistRepository artistRepository;
+        static ProductRepository albumRepository;
+        static CategoryRepository artistRepository;
         static CartRepository cartRepository;
         static CustomerRespository customerRespository;
         static TransactionHeaderRepository thRepository;
         static TransactionDetailsRepository tdRepository;
-        public static AlbumRepository albums
+        public static ProductRepository albums
         {
             get
             {
                 if (albumRepository == null)
                 {
-                    return albumRepository = new AlbumRepository();
+                    return albumRepository = new ProductRepository();
                 }
                 return albumRepository;
 
             }
         }
-        public static ArtistRepository artists
+        public static CategoryRepository artists
         {
             get
             {
                 if (artistRepository == null)
                 {
-                    return artistRepository = new ArtistRepository();
+                    return artistRepository = new CategoryRepository();
                 }
                 return artistRepository;
 

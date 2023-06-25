@@ -19,7 +19,7 @@ namespace KpopZtationLab.Views.Common
         {
             //dapetin data user
             int albumID = int.Parse(Request.QueryString["ID"]);
-            album = AlbumController.Get_album_by_id(albumID);
+            album = ProductController.Get_album_by_id(albumID);
             role = getRole();
 
         }
