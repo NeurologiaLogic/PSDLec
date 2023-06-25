@@ -51,8 +51,7 @@ namespace KpopZtationLab.Controllers
 
         public static void Remove(int id)
         {
-            var artist = repo.artists.Find(x=>x.ArtistID == id).FirstOrDefault();
-            repo.artists.Remove(artist);
+            ArtistHandler.remove(id);
         }
 
         public static void Update(int id,string name,string imageURL)
